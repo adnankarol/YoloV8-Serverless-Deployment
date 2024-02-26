@@ -1,0 +1,17 @@
+# List of Files and Folders to be ignored by Git
+
+# ignore vscode
+.vscode
+
+# ignore MAC system files
+.DS_store
+
+# ignore notebook files
+*/.ipynb_checkpoints/*
+
+# ignore data files
+*.csv
+
+# ignore cached files
+*cache*
+*_pycache_*
