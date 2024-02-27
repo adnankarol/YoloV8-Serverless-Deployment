@@ -25,6 +25,17 @@ Ensure you have the following:
 3. **Create a SageMaker Notebook Instance**:
    - Set up a SageMaker notebook instance where you will run the provided notebooks.
    - Assign an IAM role to the notebook instance with the necessary permissions to access SageMaker, S3, and any other AWS services required for your workflow.
+
+        - **S3 Bucket Permissions**:
+            - `AmazonS3FullAccess` or a more restricted policy granting access to specific S3 buckets where your data and model artifacts are stored.
+
+        - **SageMaker Permissions**:
+            - `AmazonSageMakerFullAccess` or a custom policy with permissions to create and manage SageMaker resources.
+
+        - **Invoking SageMaker Endpoints**:
+            - An IAM policy granting permission to invoke SageMaker endpoints. This policy should include the `sagemaker:InvokeEndpoint` permission.
+
+These permissions are essential for configuring access to Amazon SageMaker resources and allowing the invocation of SageMaker endpoints.
    - Ensure the notebook instance has internet access to download dependencies and access AWS services.
 
 Ensure these prerequisites are fulfilled before proceeding with the deployment process. Detailed instructions for fulfilling these prerequisites can be found in the AWS documentation for Amazon S3 and Amazon SageMaker.
