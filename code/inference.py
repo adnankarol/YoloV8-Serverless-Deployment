@@ -10,10 +10,12 @@ import numpy as np
 import torch, os, json, io, cv2, time
 from ultralytics import YOLO
 
+
 def model_fn(model_dir):
-    env = os.environ
-    model = YOLO("/opt/ml/model/code/" + env['YOLOV8_MODEL'])
+    model = YOLO('yolov8l.pt')
+    print("Loaded the YoloV8 Model !!!")
     return model
+
 
 def input_fn(request_body, request_content_type):
     if request_content_type:
@@ -26,6 +28,7 @@ def input_fn(request_body, request_content_type):
         raise Exception("Unsupported content type: " + request_content_type)
     return img
 
+
 def predict_fn(input_data, model):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model.to(device)
@@ -33,13 +36,17 @@ def predict_fn(input_data, model):
         result = model(input_data)
     return result
 
+
 def output_fn(prediction_output, content_type):
     infer = {}
     for result in prediction_output:
-        if result.boxes:
+        if 'boxes' in result._keys and result.boxes is not None:
             infer['boxes'] = result.boxes.numpy().data.tolist()
-        if result.masks:
+        if 'masks' in result._keys and result.masks is not None:
             infer['masks'] = result.masks.numpy().data.tolist()
-        if result.probs:
+        if 'keypoints' in result._keys and result.keypoints is not None:
+            infer['keypoints'] = result.keypoints.numpy().data.tolist()
+        if 'probs' in result._keys and result.probs is not None:
             infer['probs'] = result.probs.numpy().data.tolist()
+    
     return json.dumps(infer)

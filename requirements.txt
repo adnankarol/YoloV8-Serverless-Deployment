@@ -4,3 +4,4 @@ numpy==1.26.4
 opencv_python==4.9.0.80
 torch==2.2.0
 ultralytics==8.1.14
+sagemaker==2.208.0

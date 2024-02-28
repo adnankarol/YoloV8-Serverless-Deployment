@@ -15,3 +15,7 @@
 # ignore cached files
 *cache*
 *_pycache_*
+
+# ignore packags
+python/
+*.zip
