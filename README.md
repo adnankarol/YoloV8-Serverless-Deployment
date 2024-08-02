@@ -1,4 +1,4 @@
-# Deploying YOLOv8 Model on Amazon SageMaker Endpoints and Integrating with AWS Lambda and API Gateway
+# Deploying YoloV8 Model on Amazon SageMaker Endpoints and Integrating with AWS Lambda and API Gateway
 
 This repository contains instructions and code for hosting YOLOv8 PyTorch models on Amazon SageMaker Endpoints, integrated with AWS Lambda and API Gateway. The YOLOv8 model, renowned for its efficiency and accuracy in object detection, is deployed using SageMaker endpoints, complemented by AWS Lambda for serverless processing and API Gateway for creating a scalable and accessible RESTful API. This setup provides a comprehensive solution for deploying machine learning models in production environments.
 
